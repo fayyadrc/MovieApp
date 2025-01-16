@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #1a1111 !important;  
+    background-color: #e3d9d9 !important;  
     font-family: 'Arial', sans-serif;
     
 }
@@ -18,12 +18,7 @@ body {
     margin-top: 50px;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 3rem;
-    color: #dee0e2 !important;
-}
+
 
 .search-container {
     max-width: 600px;
@@ -75,5 +70,32 @@ button:hover {
 }
 
 h1 {
-    color: #333;
+    color: #f8f8f8;
 }
+
+
+/* Reduce the size of the arrow buttons */
+.carousel-control-prev, .carousel-control-next {
+    width: 30px; /* Reduce the clickable area width */
+    height: 30px; /* Reduce the clickable area height */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+}
+
+/* Reduce the size of the arrow icons */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 15px; /* Reduce arrow icon width */
+    height: 15px; /* Reduce arrow icon height */
+    background-size: 100% 100%; /* Ensure proper scaling of the arrow icon */
+}
+
+/* Optional: Adjust the icon position within the button */
+.carousel-control-prev {
+    left: 10px; /* Adjust position from left edge */
+}
+
+.carousel-control-next {
+    right: 10px; /* Adjust position from right edge */
+}
+
+

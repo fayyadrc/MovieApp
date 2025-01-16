@@ -1,0 +1,86 @@
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #1a1111;
+    color: #0056b3;
+}
+
+/* Body Styling */
+body {
+    background-color: #1a1111 !important;
+    font-family: 'Arial', sans-serif;
+    color: #dee0e2; /* For overall text readability */
+}
+
+/* Page Title */
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 3rem;
+    color: #dee0e2 !important;
+}
+
+/* Media List Styling */
+.media {
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    color: #fff;
+}
+
+.media:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Media Image */
+.media img {
+    border-radius: 4px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Media Title */
+.media h2 {
+    font-size: 1.8rem;
+    color: #007bff;
+}
+
+/* Media Text */
+.media p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: #1a1111;
+    color: #dee0e2;
+}
+
+.modal-header, .modal-body {
+    border: none;
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

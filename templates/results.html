@@ -1,39 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container"> 
-        <h1>Search Results</h1>
+{% extends "base.html" %}
 
-        {% if movies %}
-            <ul class="list-unstyled"> 
-            {% for movie in movies %}
-                <li class="media mb-4">
-                    <img src="{{ movie['Poster'] }}" alt="{{ movie['Title'] }}" class="mr-3" width="100">
-                    <div class="media-body">
-                        <h2 class="mt-0">{{ movie['Title'] }}</h2>
-                        <p><strong>Release Date:</strong> {{ movie['Release Date'] }}</p>
-                        <p><strong>Vote Average:</strong> {{ movie['Vote Average'] }}</p>
-                        <p><strong>Overview:</strong> {{ movie['Overview'] }}</p>
-                        <p><strong>Popularity:</strong> {{ movie['Popularity'] }}</p>
-                        <p><strong>Genres:</strong> {{ movie['Genres'] | join(', ') }}</p>
-                        <p><strong>Producers:</strong> {{ movie['Producers'] | join(', ') }}</p>
+{% block title %}
+Search Results - Movie App
+{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+
+{% if movies %}
+    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for i in range(0, movies|length, 5) %}
+                <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                    <div class="row">
+                        {% for movie in movies[i:i+5] %}
+                            <div class="col-md-2 d-flex justify-content-center">
+                                <div class="card" style="width: 12rem;">
+                                    {% if movie['Poster'] %}
+                                        <img src="{{ movie['Poster'] }}" class="card-img-top" alt="{{ movie['Title'] }}">
+                                    {% else %}
+                                        <img src="https://via.placeholder.com/100x150?text=No+Image" class="card-img-top" alt="No Image">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ movie['Title'] }}</h5>
+                                        <p class="card-text"><strong>Release Date:</strong> {{ movie['Release Date'] }}</p>
+                                        <p class="card-text"><strong>Vote Average:</strong> {{ movie['Vote Average'] }}</p>
+                                        <p class="card-text"><strong>Overview:</strong> {{ movie['Overview'] }}</p>
+                                        <p class="card-text"><strong>Popularity:</strong> {{ movie['Popularity'] }}</p>
+                                        <p class="card-text"><strong>Genres:</strong> {{ movie['Genres'] | join(', ') }}</p>
+                                        <p class="card-text"><strong>Producers:</strong> {{ movie['Producers'] | join(', ') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                </li>
+                </div>
             {% endfor %}
-            </ul>
-        {% else %}
-            <p>No results found.</p>
-        {% endif %}
+        </div>
+        
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endblock %}
